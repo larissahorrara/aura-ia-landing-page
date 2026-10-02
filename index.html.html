@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraIAstudio - Soluções Inteligentes com Paz e Alegria</title>
+    <meta name="description" content="AuraIAstudio: Trazendo inovação, paz e alegria através da Inteligência Artificial. Conecte-se conosco no Instagram e WhatsApp.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        aura: {
+                            light: '#E0F7FA', // Soft cyan/blue for peace
+                            primary: '#00BCD4', // Vibrant cyan
+                            accent: '#FFC107', // Cheerful yellow/amber
+                            text: '#263238', // Dark slate for readability
+                            bg: '#FAFAFA' // Very light grey for background
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: theme('colors.aura.bg');
+            color: theme('colors.aura.text');
+            overflow-x: hidden;
+        }
+        
+        /* Subtle background gradient */
+        .bg-gradient-aura {
+            background: linear-gradient(135deg, #E0F7FA 0%, #FFFFFF 100%);
+        }
+        
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col bg-gradient-aura">
+
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- SVG Logo AuraIAstudio -->
+                <div class="w-12 h-12 relative flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
+                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                        <!-- Background glow/aura -->
+                        <circle cx="50" cy="50" r="45" fill="#E0F7FA" class="animate-pulse-slow" />
+                        
+                        <!-- Interlocking A's forming a peaceful spark -->
+                        <path d="M50 15 L25 75 L35 75 L42.5 55 L57.5 55 L65 75 L75 75 Z" fill="#00BCD4" opacity="0.9" />
+                        <path d="M50 30 L37.5 60 L62.5 60 Z" fill="#FFFFFF" />
+                        
+                        <!-- AI/Tech Dot (Joyful Accent) -->
+                        <circle cx="50" cy="45" r="8" fill="#FFC107" />
+                        
+                        <!-- Surrounding subtle sparks -->
+                        <circle cx="75" cy="25" r="4" fill="#00BCD4" opacity="0.6" class="animate-ping" style="animation-duration: 3s;" />
+                        <circle cx="20" cy="40" r="3" fill="#FFC107" opacity="0.6" class="animate-ping" style="animation-duration: 2.5s; animation-delay: 1s;" />
+                    </svg>
+                </div>
+                <span class="font-heading font-bold text-2xl tracking-tight text-aura-primary">
+                    Aura<span class="text-aura-accent">IA</span>studio
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#sobre" class="text-gray-600 hover:text-aura-primary transition-colors">Sobre</a>
+                <a href="#servicos" class="text-gray-600 hover:text-aura-primary transition-colors">Serviços</a>
+                <a href="#contato" class="px-6 py-2 bg-aura-primary text-white rounded-full hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-200 transition-all transform hover:-translate-y-0.5">Fale Conosco</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-600 focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t absolute w-full left-0 top-full shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#sobre" class="text-gray-600 hover:text-aura-primary block py-2 menu-link">Sobre</a>
+                <a href="#servicos" class="text-gray-600 hover:text-aura-primary block py-2 menu-link">Serviços</a>
+                <a href="#contato" class="text-aura-primary font-semibold block py-2 menu-link">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+        <!-- Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-20 -left-20 w-72 h-72 bg-aura-primary/10 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-float"></div>
+            <div class="absolute bottom-20 -right-20 w-96 h-96 bg-aura-accent/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-float" style="animation-delay: 2s;"></div>
+
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+                <!-- Text Content -->
+                <div class="text-center md:text-left space-y-8">
+                    <!-- PROMO AGRESSIVA -->
+                    <div class="inline-block animate-bounce px-6 py-2 rounded-full bg-red-600 text-white font-bold text-lg mb-2 shadow-[0_0_20px_rgba(220,38,38,0.6)] border-2 border-white">
+                        🔥 OFERTA: 2 FOTOS POR SÓ R$ 9,90! 🔥
+                    </div>
+                    
+                    <h1 class="font-heading text-5xl md:text-6xl font-bold leading-tight text-gray-800">
+                        A sua melhor versão com a <span class="text-transparent bg-clip-text bg-gradient-to-r from-aura-primary to-cyan-400">Magia da IA</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-lg mx-auto md:mx-0 leading-relaxed font-medium">
+                        Crie fotos profissionais, avatares incríveis e ensaios perfeitos sem sair de casa. Rápido, prático e com qualidade de estúdio!
+                    </p>
+                    
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                        <a href="https://wa.me/553196392731?text=Oi!%20Quero%20aproveitar%20a%20promoção%20de%202%20fotos%20por%20R$%209,90!" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center justify-center gap-2 px-8 py-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-lg hover:shadow-xl hover:shadow-green-300 transition-all transform hover:-translate-y-1 animate-pulse-slow">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                            </svg>
+                            QUERO MINHAS FOTOS AGORA!
+                        </a>
+                        <a href="#servicos" class="flex items-center justify-center gap-2 px-8 py-5 bg-white text-gray-800 border-2 border-gray-200 rounded-full font-semibold hover:border-aura-primary hover:text-aura-primary transition-all">
+                            Ver todos os pacotes
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Element -->
+                <div class="relative h-96 md:h-[500px] flex items-center justify-center">
+                    <!-- Abstract Blob background -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-aura-primary/20 to-aura-accent/20 blob-shape transform md:scale-110"></div>
+                    
+                    <!-- Main Illustration / Graphic Placeholder -->
+                    <div class="relative z-10 w-full max-w-md p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white flex flex-col items-center justify-center gap-6 animate-float" style="animation-duration: 8s;">
+                        <!-- Large version of logo or conceptual icon -->
+                         <div class="w-32 h-32 relative flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl">
+                                <circle cx="50" cy="50" r="45" fill="#E0F7FA" class="animate-pulse-slow" />
+                                <path d="M50 15 L25 75 L35 75 L42.5 55 L57.5 55 L65 75 L75 75 Z" fill="#00BCD4" />
+                                <path d="M50 30 L37.5 60 L62.5 60 Z" fill="#FFFFFF" />
+                                <circle cx="50" cy="45" r="8" fill="#FFC107" />
+                            </svg>
+                        </div>
+                        <div class="text-center space-y-2">
+                            <h3 class="font-heading font-bold text-2xl text-gray-800">Seu Avatar Perfeito</h3>
+                            <p class="text-gray-500 text-sm">Qualidade impressionante em minutos.</p>
+                        </div>
+                        
+                        <!-- Floating small UI elements to represent tech/joy -->
+                        <div class="absolute -top-6 -right-6 bg-white p-3 rounded-2xl shadow-lg border border-gray-50 animate-bounce" style="animation-duration: 3s;">
+                            <span class="text-2xl">✨</span>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-lg border border-gray-50 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+                            <span class="text-2xl">🌱</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="py-24 bg-white relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-800 mb-4">A Essência da AuraIA</h2>
+                    <p class="text-gray-600 text-lg">Acreditamos que a tecnologia deve ser uma força positiva, que traz tranquilidade e eficiência para o seu dia a dia.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-8 rounded-3xl bg-aura-light/30 border border-cyan-50 hover:shadow-xl transition-shadow duration-300 group">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                            <span class="text-3xl">🕊️</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-gray-800 mb-3">Paz de Espírito</h3>
+                        <p class="text-gray-600">Automações que funcionam silenciosamente, tirando o peso das tarefas repetitivas das suas costas.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="p-8 rounded-3xl bg-yellow-50/50 border border-yellow-100 hover:shadow-xl transition-shadow duration-300 group mt-8 md:mt-0">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                            <span class="text-3xl">💡</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-gray-800 mb-3">Soluções Brilhantes</h3>
+                        <p class="text-gray-600">Usamos a inteligência artificial mais avançada para criar caminhos inovadores e eficientes para o seu negócio.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="p-8 rounded-3xl bg-cyan-50/50 border border-cyan-100 hover:shadow-xl transition-shadow duration-300 group md:-mt-8">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                            <span class="text-3xl">😊</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-gray-800 mb-3">Experiência Alegre</h3>
+                        <p class="text-gray-600">Sem jargões complicados. Tornamos o processo de adoção tecnológica leve, compreensível e empolgante.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="py-24 bg-gray-50 relative border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-aura-primary font-bold tracking-wider uppercase text-sm">Escolha seu pacote</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-gray-800 mt-2 mb-6">Nossos Pacotes de Fotos IA</h2>
+                    <p class="text-gray-600 text-lg">Selecione a quantidade ideal para você. O processo é simples, rápido e com um resultado que vai te surpreender.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto items-center">
+                    
+                    <!-- Pacote 1 -->
+                    <div class="bg-white rounded-3xl p-8 border-2 border-red-500 shadow-xl relative transform md:-translate-y-4">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-1 rounded-full font-bold text-sm whitespace-nowrap animate-pulse">
+                            OFERTA INICIAL
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-2">2 Fotos</h3>
+                        <p class="text-gray-500 text-sm mb-6">Ideal para testar a nossa mágica.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 9,90</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-gray-600">
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Alta Resolução</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 1 Estilo Escolhido</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Entrega Rápida</li>
+                        </ul>
+                        <a href="https://wa.me/553196392731?text=Olá!%20Quero%20o%20pacote%20de%202%20fotos%20por%20R$%209,90!" target="_blank" class="block w-full py-3 px-4 bg-gray-900 text-white text-center font-bold rounded-xl hover:bg-gray-800 transition-colors">
+                            Comprar Agora
+                        </a>
+                    </div>
+
+                    <!-- Pacote 2 -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-2">3 Fotos</h3>
+                        <p class="text-gray-500 text-sm mb-6">Mais opções para o seu perfil.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 14,90</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-gray-600">
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Alta Resolução</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Até 2 Estilos</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Entrega Rápida</li>
+                        </ul>
+                        <a href="https://wa.me/553196392731?text=Olá!%20Quero%20o%20pacote%20de%203%20fotos%20por%20R$%2014,90!" target="_blank" class="block w-full py-3 px-4 bg-aura-light text-aura-primary border border-cyan-200 text-center font-bold rounded-xl hover:bg-cyan-100 transition-colors">
+                            Escolher Pacote
+                        </a>
+                    </div>
+
+                    <!-- Pacote 3 (Popular) -->
+                    <div class="bg-gradient-to-b from-cyan-50 to-white rounded-3xl p-8 border-2 border-aura-primary shadow-2xl relative transform md:-translate-y-4">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-aura-primary text-white px-4 py-1 rounded-full font-bold text-sm whitespace-nowrap shadow-md">
+                            ⭐ MAIS VENDIDO
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-2">5 Fotos</h3>
+                        <p class="text-gray-500 text-sm mb-6">A variação perfeita para redes.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 19,90</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-gray-800 font-medium">
+                            <li class="flex items-center gap-2"><span class="text-aura-primary">✓</span> Qualidade Premium</li>
+                            <li class="flex items-center gap-2"><span class="text-aura-primary">✓</span> Múltiplos Estilos</li>
+                            <li class="flex items-center gap-2"><span class="text-aura-primary">✓</span> Prioridade na Fila</li>
+                        </ul>
+                        <a href="https://wa.me/553196392731?text=Olá!%20Quero%20o%20pacote%20de%205%20fotos%20por%20R$%2019,90!" target="_blank" class="block w-full py-4 px-4 bg-aura-primary text-white text-center font-bold rounded-xl hover:bg-cyan-600 shadow-lg hover:shadow-cyan-200 transition-all">
+                            Quero o Mais Vendido
+                        </a>
+                    </div>
+
+                    <!-- Pacote 4 -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-shadow relative">
+                        <div class="absolute top-0 right-0 bg-yellow-400 text-gray-900 px-3 py-1 rounded-bl-xl rounded-tr-3xl font-bold text-xs">
+                            Custo-Benefício
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 mb-2">10 Fotos</h3>
+                        <p class="text-gray-500 text-sm mb-6">Um ensaio fotográfico completo.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 29,90</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-gray-600">
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Qualidade Premium</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Estilos Ilimitados</li>
+                            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Suporte VIP</li>
+                        </ul>
+                        <a href="https://wa.me/553196392731?text=Olá!%20Quero%20o%20pacote%20VIP%20de%2010%20fotos%20por%20R$%2029,90!" target="_blank" class="block w-full py-3 px-4 bg-aura-light text-aura-primary border border-cyan-200 text-center font-bold rounded-xl hover:bg-cyan-100 transition-colors">
+                            Escolher Pacote
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-aura-primary/20 rounded-full blur-3xl"></div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+                    <div class="max-w-lg text-center md:text-left">
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Pronto para transformar seu negócio?</h2>
+                        <p class="text-gray-400 text-lg mb-8">Nossa equipe está pronta para te ouvir. Entre em contato e descubra como a AuraIAstudio pode ajudar.</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                             <a href="https://wa.me/553196392731?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20AuraIAstudio." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-lg hover:text-green-400 transition-colors bg-white/10 px-6 py-3 rounded-xl backdrop-blur-sm">
+                                <span>📱</span>
+                                <span>(31) 9639-2731</span>
+                            </a>
+                            <a href="https://instagram.com/aura.ia.studio_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-lg hover:text-pink-400 transition-colors bg-white/10 px-6 py-3 rounded-xl backdrop-blur-sm">
+                                <span>📸</span>
+                                <span>@aura.ia.studio_</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Logo -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 mb-4 opacity-80">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#00BCD4" stroke-width="2" />
+                                <path d="M50 15 L25 75 L35 75 L42.5 55 L57.5 55 L65 75 L75 75 Z" fill="#00BCD4" />
+                                <path d="M50 30 L37.5 60 L62.5 60 Z" fill="#111827" /> <!-- matched footer bg -->
+                                <circle cx="50" cy="45" r="8" fill="#FFC107" />
+                            </svg>
+                        </div>
+                        <span class="font-heading font-bold text-xl tracking-tight text-white">
+                            Aura<span class="text-aura-accent">IA</span>studio
+                        </span>
+                        <p class="text-gray-500 mt-2 text-sm text-center">© 2026 AuraIAstudio.<br>Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.menu-link');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // Header shadow on scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('py-4');
+                    header.classList.add('py-2');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.remove('py-2');
+                    header.classList.add('py-4');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
